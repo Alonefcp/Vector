@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cassert>
 #include <iostream>
 
 template<typename Vector>
@@ -15,7 +16,7 @@ public:
 
 	VectorIterator& operator++()
 	{
-		m_Ptr++;
+		++m_Ptr;
 		return *this;
 	}
 
@@ -28,7 +29,7 @@ public:
 
 	VectorIterator& operator--()
 	{
-		m_Ptr--;
+		--m_Ptr;
 		return *this;
 	}
 
@@ -160,23 +161,13 @@ public:
 
 	T& operator[] (size_t index)
 	{
-		if (index >= m_size)
-		{
-			//assert
-		}
-
+		assert(index < m_size);
 		return m_data[index];
 	}
 
 	const T& operator[] (size_t index) const
 	{
-
-		if (index >= m_size)
-		{
-			//assert
-		}
-
-
+		assert(index < m_size);
 		return m_data[index];
 	}
 
